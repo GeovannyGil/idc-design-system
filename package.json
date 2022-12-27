@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./assets",
     "format": "standard --fix",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-custom-properties": "node ./scripts/buildTokens"
   },
   "keywords": [],
   "author": "",
@@ -34,7 +35,10 @@
     "standard": "^17.0.0"
   },
   "dependencies": {
-    "snazzy": "^9.0.0"
+    "clsx": "^1.2.1",
+    "react-svg": "^15.1.17",
+    "snazzy": "^9.0.0",
+    "styled-components": "^5.3.6"
   },
   "eslintConfig": {
     "standard": "node_modules/standard/eslintrc.json"
