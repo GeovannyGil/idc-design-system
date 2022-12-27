@@ -35,5 +35,3 @@ Typography.defaultProps = {
   highlight: false,
   ellipsis: false
 }
-
-export default Typography

@@ -292,5 +292,3 @@ Button.defaultProps = {
   loading: false,
   icon: undefined
 }
-
-export default Button

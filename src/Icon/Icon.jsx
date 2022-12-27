@@ -54,5 +54,3 @@ Icon.defaultProps = {
   className: '',
   size: 24
 }
-
-export default Icon

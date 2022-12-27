@@ -132,5 +132,3 @@ Field.defaultProps = {
   hint: '',
   onChange: undefined
 }
-
-export default Field
