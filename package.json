@@ -1,5 +1,5 @@
 {
-  "name": "@idc/idcform-design-system",
+  "name": "idcform-design-system",
   "version": "0.1.0",
   "description": "IDC FORM Design System",
   "main": "dist/index.js",
