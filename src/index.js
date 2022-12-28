@@ -1,5 +1,8 @@
 /*  eslint-disable */
 // TODO: Remove eslint-disable when we have a better solution for this
+export * from './tokens'
+export * from './shared'
+
 export * from './Button'
 export * from './Field'
 export * from './Icon'

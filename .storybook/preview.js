@@ -1,6 +1,7 @@
-import '../styles/reset.css'
-import '../styles/tokens.css'
-import '../styles/main.css'
+import React from 'react'
+import { GlobalStyle } from '../src/shared'
+
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -10,3 +11,12 @@ export const parameters = {
     },
   },
 }
+
+export const decorators = [
+  (Story) => (
+    <>
+      <GlobalStyle />
+      <Story />
+    </>
+  ),
+]
