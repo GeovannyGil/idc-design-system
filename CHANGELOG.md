@@ -1,3 +1,15 @@
+# v0.1.2 (Wed Dec 28 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Fix exports in components and resolve validation in event click in button (esgeovannygil@gmail.com)
+
+#### Authors: 1
+
+- Geovanny Gil (esgeovannygil@gmail.com)
+
+---
+
 # v0.1.1 (Wed Dec 28 2022)
 
 #### ⚠️ Pushed to `main`
