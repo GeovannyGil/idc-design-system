@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { TYPE_TEXT_VARIANTS } from './constants'
-import Typography from './Typography'
+import { Typography } from './Typography'
 
 const ContainerTypography = styled.div`
   display: flex;

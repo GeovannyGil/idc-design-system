@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import FieldLabel from './FieldLabel'
-import FieldHint from './FieldHint'
-import FieldError from './FieldError'
+import { FieldLabel } from './FieldLabel'
+import { FieldHint } from './FieldHint'
+import { FieldError } from './FieldError'
 import { colors } from '../tokens'
 
 const FieldContainer = styled.div`
@@ -56,7 +56,7 @@ const FieldInputContaier = styled.div`
   }
 `
 
-const Field = forwardRef(({ label, hint, error, disabled, placeholder, required, onChange, ...props }, ref) => {
+export const Field = forwardRef(({ label, hint, error, disabled, placeholder, required, onChange, ...props }, ref) => {
   const stateError = error !== ''
 
   const handleChange = (e) => {
@@ -129,5 +129,3 @@ Field.defaultProps = {
   hint: '',
   onChange: undefined
 }
-
-export default Field

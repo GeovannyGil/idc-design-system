@@ -75,7 +75,7 @@ const TypographyWrapper = styled.span`
   `}
 `
 
-const Typography = ({ children, variant, highlight, ellipsis, ...props }) => {
+export const Typography = ({ children, variant, highlight, ellipsis, ...props }) => {
   return (
     <TypographyWrapper
       variant={variant}
@@ -101,5 +101,3 @@ Typography.defaultProps = {
   highlight: false,
   ellipsis: false
 }
-
-export default Typography

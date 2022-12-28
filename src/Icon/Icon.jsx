@@ -32,7 +32,7 @@ const IconWrapper = styled(ReactSVG)`
 //   fill: ${({ color }) => color};
 //     }
 
-const Icon = ({ type, size, className, ...props }) => {
+export const Icon = ({ type, size, className, ...props }) => {
   return (
     <IconWrapper
       src={mapIcon(type)}
@@ -54,5 +54,3 @@ Icon.defaultProps = {
   className: '',
   size: 24
 }
-
-export default Icon

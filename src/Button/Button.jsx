@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
-import Icon from '../Icon'
+import { Icon } from '../Icon'
 import { colors, misc } from '../tokens'
 
 const rotation = keyframes`
@@ -251,12 +251,12 @@ const ButtonWrapper = styled.button`
 
 `
 
-const Button = React.forwardRef(
+export const Button = React.forwardRef(
   ({ children, variant, size, disabled, onClick, fullWidth, loading, icon, ...props }, ref) => {
     const isDisabled = disabled || loading
 
     const handleClick = (e) => {
-      if (isDisabled && onClick) {
+      if (!isDisabled && onClick) {
         onClick(e)
       }
     }
@@ -312,5 +312,3 @@ Button.defaultProps = {
   loading: false,
   icon: undefined
 }
-
-export default Button

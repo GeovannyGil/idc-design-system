@@ -7,7 +7,7 @@ import AvenirBook from '../../assets/fonts/Avenir-Book.woff2'
 import AvenirLight from '../../assets/fonts/Avenir-Light.woff2'
 import { fonts } from '../tokens'
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/
     v2.0 | 20110126
     License: none (public domain)
@@ -103,5 +103,3 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${fonts.family};
   }
 `
-
-export default GlobalStyle

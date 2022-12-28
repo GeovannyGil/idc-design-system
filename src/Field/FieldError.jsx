@@ -13,7 +13,7 @@ const ErrorContent = styled.div`
   gap: 2px;
 `
 
-const FieldError = ({ error }) => {
+export const FieldError = ({ error }) => {
   return (
     <ErrorContent>
       {error}
@@ -28,5 +28,3 @@ FieldError.propTypes = {
 FieldError.defaultProps = {
   error: ''
 }
-
-export default FieldError

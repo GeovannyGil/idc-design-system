@@ -10,7 +10,7 @@ const HintContent = styled.p`
   color: ${colors.neutral[400]};
 `
 
-const FieldHint = ({ hint }) => {
+export const FieldHint = ({ hint }) => {
   return (
     <HintContent>
       {hint}
@@ -25,5 +25,3 @@ FieldHint.propTypes = {
 FieldHint.defaultProps = {
   hint: ''
 }
-
-export default FieldHint

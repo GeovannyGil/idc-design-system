@@ -1,6 +1,6 @@
 const ICONS_ASSETS_PATH = '/icons'
 
-const iconMap = {
+export const iconMap = {
   loader: 'loader',
   warning: 'warning-circle',
   close: 'close'

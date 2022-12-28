@@ -20,7 +20,7 @@ const LabelContent = styled.label`
   }}
 `
 
-const FieldLabel = ({ labelText, required }) => {
+export const FieldLabel = ({ labelText, required }) => {
   return (
     <LabelContent required={required} className='input__label'>
       {labelText}
@@ -37,5 +37,3 @@ FieldLabel.defaultProps = {
   labelText: '',
   required: false
 }
-
-export default FieldLabel

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Icon from '../Icon'
-import Button from './Button'
+import { Icon } from '../Icon'
+import { Button } from './Button'
 
 export default {
   title: 'Component/Button',
@@ -22,7 +22,8 @@ export const Default = Template.bind({})
 Default.args = {
   variant: 'default',
   children: 'Default',
-  icon: <Icon type='warning' />
+  icon: <Icon type='warning' />,
+  onClick: () => { console.log('clicked') }
 }
 
 export const Sizes = () => (
