@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from './Icon'
+import Icon from './Icon'
 
 export default {
   title: 'Component/Icon',
@@ -8,8 +8,8 @@ export default {
 
 const Template = (args) => <Icon {...args} />
 
-export const Loader = Template.bind({})
+export const Default = Template.bind({})
 
-Loader.args = {
+Default.args = {
   type: 'loader'
 }

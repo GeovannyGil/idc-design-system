@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
 import styled from 'styled-components'
-import { FieldLabel } from './FielLabel'
-import { FieldHint } from './FieldHint'
-import { FieldError } from './FieldError'
+import FieldLabel from './FieldLabel'
+import FieldHint from './FieldHint'
+import FieldError from './FieldError'
+import { colors } from '../tokens'
 
 const FieldContainer = styled.div`
   display: flex;
@@ -18,21 +18,21 @@ const FieldInputContaier = styled.div`
   width: 100%;
   padding: 10px 16px;
   border-radius: 4px;
-  border: 1px solid var(--color-neutral-200);
+  border: 1px solid ${colors.neutral[200]};
 
   ${({ disabled }) =>
   disabled && {
-    backgroundColor: 'var(--color-neutral-100)'
+    backgroundColor: colors.neutral[100]
   }}
 
   ${({ error }) =>
   error && {
-    border: '1px solid var(--color-danger-500)'
+    border: `1px solid ${colors.danger[500]}`
   }}
 
   &:focus-within {
-    border: 1px solid var(--color-primary-400);
-    box-shadow: 0 0 0 2px var(--color-primary-400);
+    border: 1px solid ${colors.primary[400]};
+    box-shadow: 0 0 0 2px ${colors.primary[400]};
   }
 
   & input {
@@ -42,7 +42,7 @@ const FieldInputContaier = styled.div`
     border: none;
 
     &::placeholder {
-      color: var(--color-neutral-400);
+      color: ${colors.neutral[400]};
     }
 
     &:focus {
@@ -50,13 +50,13 @@ const FieldInputContaier = styled.div`
     }
 
     &:disabled {
-      background-color: var(--color-neutral-100);
-      color: var(--color-neutral-500);
+      background-color: ${colors.neutral[100]};
+      color: ${colors.neutral[500]};
     }
   }
 `
 
-export const Field = forwardRef(({ label, hint, error, disabled, placeholder, required, onChange, ...props }, ref) => {
+const Field = forwardRef(({ label, hint, error, disabled, placeholder, required, onChange, ...props }, ref) => {
   const stateError = error !== ''
 
   const handleChange = (e) => {
@@ -76,9 +76,6 @@ export const Field = forwardRef(({ label, hint, error, disabled, placeholder, re
           />
       }
       <FieldInputContaier
-        className={clsx(
-          'input'
-        )}
         disabled={disabled}
         aria-disabled={disabled}
         error={stateError}
@@ -132,3 +129,5 @@ Field.defaultProps = {
   hint: '',
   onChange: undefined
 }
+
+export default Field

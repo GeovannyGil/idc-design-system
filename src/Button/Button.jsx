@@ -1,15 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import clsx from 'clsx'
-import styled from 'styled-components'
-import { Icon } from '../Icon'
+import styled, { keyframes } from 'styled-components'
+import Icon from '../Icon'
+import { colors, misc } from '../tokens'
+
+const rotation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+`
+
+const LoadingWrapper = styled.div`
+  animation: ${rotation} 2s infinite linear;
+  will-change: transform;
+`
 
 const ButtonWrapper = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
-  border-radius: var(--border-radius-sm);
+  border-radius: ${misc.borderRadius.sm};
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
@@ -21,13 +35,13 @@ const ButtonWrapper = styled.button`
 
   &:disabled,
   &:disabled:hover {
-    background-color: var(--color-neutral-200);
-    border: 1px solid var(--color-neutral-300);
-    color: var(--color-neutral-500);
+    background-color: ${colors.neutral[200]};
+    border: 1px solid ${colors.neutral[300]};
+    color: ${colors.neutral[500]};
     cursor: not-allowed;
 
     & svg path {
-      fill: var(--color-neutral-500);
+      fill: ${colors.neutral[500]};
     }
   }
 
@@ -38,7 +52,7 @@ const ButtonWrapper = styled.button`
   &:after {
     transition-property: all;
     transition-duration: 0.2s;
-    border-radius: var(--border-radius-md);
+    border-radius: ${misc.borderRadius.md};
     content: '';
     position: absolute;
     top: -4px;
@@ -52,14 +66,14 @@ const ButtonWrapper = styled.button`
     outline: none;
 
     &:after {
-      border-radius: var(--border-radius-md);
+      border-radius: ${misc.borderRadius.md};
       content: '';
       position: absolute;
       top: -5px;
       bottom: -5px;
       left: -5px;
       right: -5px;
-      border: 2px solid var(--color-primary-400);
+      border: 2px solid ${colors.primary[400]};
     }
   }
 
@@ -72,7 +86,7 @@ const ButtonWrapper = styled.button`
             height: 2rem;
 
             & .iconWrapper {
-              width: 20px;
+              width: 16px;
             }
           `
       case 'large':
@@ -82,7 +96,7 @@ const ButtonWrapper = styled.button`
             height: 2.5rem;
 
             & .iconWrapper {
-              width: 24px;
+              width: 22px;
             }
           `
       default:
@@ -92,7 +106,7 @@ const ButtonWrapper = styled.button`
             height: 2.25rem;
 
             & .iconWrapper {
-              width: 24px;
+              width: 20px;
             }
           `
     }
@@ -102,130 +116,130 @@ const ButtonWrapper = styled.button`
     switch (variant) {
       case 'primary':
         return `
-          background-color: var(--color-primary-500);
-          color: var(--color-base-white);
+          background-color: ${colors.primary[500]};
+          color: ${colors.base.white};
 
           & svg path {
-            fill: var(--color-base-white);
+            fill: ${colors.base.white};
           }
 
           &:hover {
-            background-color: var(--color-alternative-500);
+            background-color: ${colors.alternative[500]};
           }
 
           &:active {
-            background-color: var(--color-primary-500);
+            background-color: ${colors.primary[500]};
           }
         `
       case 'secondary':
         return `
-          background-color: var(--color-primary-100);
-          color: var(--color-primary-300);
-          border: 1px solid var(--color-primary-300);
+          background-color: ${colors.primary[100]};
+          color: ${colors.primary[300]};
+          border: 1px solid ${colors.primary[300]};
 
           & svg path {
-            fill: var(--color-primary-300);
+            fill: ${colors.primary[300]};
           }
 
           &:hover {
-            background-color: var(--color-base-white);
-            color: var(--color-primary-200);
-            border: 1px solid var(--color-primary-200);
+            background-color: ${colors.base.white};
+            color: ${colors.primary[200]};
+            border: 1px solid ${colors.primary[200]};
           }
 
           &:active {
-            background-color: var(--color-base-white);
-            color: var(--color-primary-400);
-            border: 1px solid var(--color-primary-400);
+            background-color: ${colors.base.white};
+            color: ${colors.primary[400]};
+            border: 1px solid ${colors.primary[400]};
           }
         `
       case 'tertiary':
         return `
-          background-color: var(--color-base-white);
-          color: var(--color-neutral-800);
-          border: 1px solid var(--color-neutral-200);
+          background-color: ${colors.base.white};
+          color: ${colors.neutral[800]};
+          border: 1px solid ${colors.neutral[200]};
 
           & svg path {
-            fill: var(--color-neutral-800);
+            fill: ${colors.neutral[800]};
           }
 
           &:hover {
-            background-color: var(--color-neutral-100);
-            color: var(--color-neutral-800);
-            border: 1px solid var(--color-neutral-200);
+            background-color: ${colors.neutral[100]};
+            color: ${colors.neutral[800]};
+            border: 1px solid ${colors.neutral[200]};
           }
 
           &:active {
-            background-color: var(--color-neutral-300);
-            color: var(--color-neutral-800);
-            border: 1px solid var(--color-neutral-200);
+            background-color: ${colors.neutral[300]};
+            color: ${colors.neutral[800]};
+            border: 1px solid ${colors.neutral[200]};
           }
         `
       case 'success':
         return `
-          background-color: var(--color-success-100);
-          color: var(--color-success-600);
-          border: 1px solid var(--color-success-200);
+          background-color: ${colors.success[100]};
+          color: ${colors.success[600]};
+          border: 1px solid ${colors.success[200]};
 
           & svg path {
-            fill: var(--color-success-600);
+            fill: ${colors.success[600]};
           }
 
           &:hover {
-            background-color: var(--color-base-white);
-            color: var(--color-success-600);
-            border: 1px solid var(--color-success-200);
+            background-color: ${colors.base.white};
+            color: ${colors.success[600]};
+            border: 1px solid ${colors.success[200]};
           }
 
           &:active {
-            background-color: var(--color-base-white);
-            color: var(--color-success-700);
-            border: 1px solid var(--color-success-700);
+            background-color: ${colors.base.white};
+            color: ${colors.success[700]};
+            border: 1px solid ${colors.success[700]};
           }
         `
       case 'danger':
         return `
-          background-color: var(--color-danger-100);
-          color: var(--color-danger-600);
-          border: 1px solid var(--color-danger-200);
+          background-color: ${colors.danger[100]};
+          color: ${colors.danger[600]};
+          border: 1px solid ${colors.danger[200]};
 
           & svg path {
-            fill: var(--color-danger-600);
+            fill: ${colors.danger[600]};
           }
 
           &:hover {
-            background-color: var(--color-base-white);
-            color: var(--color-danger-600);
-            border: 1px solid var(--color-danger-200);
+            background-color: ${colors.base.white};
+            color: ${colors.danger[600]};
+            border: 1px solid ${colors.danger[200]};
           }
 
           &:active {
-            background-color: var(--color-base-white);
-            color: var(--color-danger-700);
-            border: 1px solid var(--color-danger-700);
+            background-color: ${colors.base.white};
+            color: ${colors.danger[700]};
+            border: 1px solid ${colors.danger[700]};
           }
         `
       case 'text':
         return `
-          background-color: var(--color-base-white);
-          color: var(--color-primary-400);
+          background-color: ${colors.base.white};
+          color: ${colors.primary[400]};
           border-color: transparent;
 
           & svg path {
-            fill: var(--color-primary-400);
+            fill: ${colors.primary[400]};
           }
 
           &:hover {
-            color: var(--color-alternative-600);
+            color: ${colors.alternative[600]};
           }
 
           &:active {
-            color: var(--color-primary-500);
+            color: ${colors.primary[500]};
           }
 
           &:disabled, &:disabled:hover {
             border-color: transparent;
-            background-color: var(--color-base-white);
+            background-color: ${colors.base.white};
           }
         `
     }
@@ -237,7 +251,7 @@ const ButtonWrapper = styled.button`
 
 `
 
-export const Button = React.forwardRef(
+const Button = React.forwardRef(
   ({ children, variant, size, disabled, onClick, fullWidth, loading, icon, ...props }, ref) => {
     const isDisabled = disabled || loading
 
@@ -260,7 +274,13 @@ export const Button = React.forwardRef(
         {(icon || loading) &&
           <>
             {
-              loading ? <Icon type='loader' className='animate--rotate' /> : (icon)
+            loading
+              ? (
+                <LoadingWrapper>
+                  <Icon type='loader' />
+                </LoadingWrapper>
+                )
+              : (icon)
             }
           </>}
         {children}
@@ -292,3 +312,5 @@ Button.defaultProps = {
   loading: false,
   icon: undefined
 }
+
+export default Button

@@ -1,25 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { colors } from '../tokens'
 
-export const LabelContent = styled.label`
+const LabelContent = styled.label`
   display: block;
   font-size: .75rem;
   line-height: 1.33;
   font-weight: 600;
-  color: var(--color-neutral-700);
+  color: ${colors.neutral[700]};
 
   ${({ required }) =>
   required && {
     '&::after': {
       content: '"*"',
-      color: 'var(--color-danger-600)'
+      color: colors.danger[600]
       // marginLeft: '0.25rem'
     }
   }}
 `
 
-export const FieldLabel = ({ labelText, required }) => {
+const FieldLabel = ({ labelText, required }) => {
   return (
     <LabelContent required={required} className='input__label'>
       {labelText}
@@ -36,3 +37,5 @@ FieldLabel.defaultProps = {
   labelText: '',
   required: false
 }
+
+export default FieldLabel
