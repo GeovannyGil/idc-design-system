@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "styled-components.vscode-styled-components",
+    "blanu.vscode-styled-jsx",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "standard.vscode-standard"
+  ]
+}

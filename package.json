@@ -3,17 +3,31 @@
   "version": "0.1.0",
   "description": "IDC FORM Design System",
   "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006 -s ./assets",
     "format": "standard --fix",
+    "lint": "eslint . --fix",
     "build-storybook": "build-storybook",
     "build-prod": "cross-env BABEL_ENV=production babel src -d dist",
-    "build-custom-properties": "node ./scripts/buildTokens"
+    "build-custom-properties": "node ./scripts/buildTokens",
+    "release": "auto shipit --base-branch=main",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "prettier": "prettier-config-standard",
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
@@ -34,13 +48,17 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.31.11",
+    "husky": ">=7",
+    "lint-staged": ">=10",
+    "prettier": "^2.8.1",
+    "prettier-config-standard": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "standard": "^17.0.0"
   },
   "dependencies": {
     "clsx": "^1.2.1",
+    "eslint-plugin-react": "^7.31.11",
     "react-svg": "^15.1.17",
     "snazzy": "^9.0.0",
     "styled-components": "^5.3.6"
@@ -64,5 +82,13 @@
   "bugs": {
     "url": "https://github.com/GeovannyGil/idc-design-system/issues"
   },
-  "homepage": "https://github.com/GeovannyGil/idc-design-system#readme"
+  "homepage": "https://github.com/GeovannyGil/idc-design-system#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
 }
