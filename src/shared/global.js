@@ -1,10 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import AvenirBlack from '../../assets/fonts/Avenir-Black.woff2'
-import AvenirHeavy from '../../assets/fonts/Avenir-Heavy.woff2'
-import AvenirMedium from '../../assets/fonts/Avenir-Medium.woff2'
-import AvenirRoman from '../../assets/fonts/Avenir-Roman.woff2'
-import AvenirBook from '../../assets/fonts/Avenir-Book.woff2'
-import AvenirLight from '../../assets/fonts/Avenir-Light.woff2'
 import { fonts } from '../tokens'
 
 export const GlobalStyle = createGlobalStyle`
@@ -14,42 +8,42 @@ export const GlobalStyle = createGlobalStyle`
   */
   @font-face {
     font-family: 'Avenir';
-    src: url(${AvenirBlack}) format('woff2');
+    src: url('/fonts/Avenir-Black.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Avenir';
-    src: url(${AvenirHeavy}) format('woff2');
+    src: url('/fonts/Avenir-Heavy.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Avenir';
-    src: url(${AvenirMedium}) format('woff2');
+    src: url('/fonts/Avenir-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Avenir';
-    src: url(${AvenirRoman}) format('woff2');
+    src: url('/fonts/Avenir-Roman.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Avenir';
-    src: url(${AvenirBook}) format('woff2');
+    src: url('/fonts/Avenir-Book.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Avenir';
-    src: url(${AvenirLight}) format('woff2');
+    src: url('/fonts/Avenir-Light.woff2') format('woff2');
     font-weight: 200;
     font-style: normal;
   }
