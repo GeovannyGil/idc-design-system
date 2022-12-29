@@ -93,7 +93,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
+    box-sizing: border-box;
     font-size: ${fonts.size.base};
     font-family: ${fonts.family};
   }
+
+  *, *:before, *:after {
+  box-sizing: inherit;
+}
 `
