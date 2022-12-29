@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { FieldLabel } from './FieldLabel'
 import { FieldHint } from './FieldHint'
 import { FieldError } from './FieldError'
-import { colors } from '../tokens'
+import { colors, misc } from '../tokens'
 
 const FieldContainer = styled.div`
   display: flex;
@@ -12,12 +12,13 @@ const FieldContainer = styled.div`
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
 `
 
 const FieldInputContaier = styled.div`
   width: 100%;
   padding: 10px 16px;
-  border-radius: 4px;
+  border-radius: ${misc.borderRadius.sm};
   border: 1px solid ${colors.neutral[200]};
 
   ${({ disabled }) =>
@@ -87,9 +88,9 @@ export const Field = forwardRef(({ label, hint, error, disabled, placeholder, re
           aria-disabled={disabled}
           required={required}
           aria-required={required}
+          onChange={handleChange}
           ref={ref}
           {...props}
-          onChange={handleChange}
         />
       </FieldInputContaier>
       {
