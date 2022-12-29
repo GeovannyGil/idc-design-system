@@ -7,7 +7,16 @@ export const iconMap = {
   arrowRight: 'arrow-right',
   arrowLeft: 'arrow-left',
   arrowDown: 'arrow-down',
-  arrowUp: 'arrow-up'
+  arrowUp: 'arrow-up',
+  dashboard: 'dashboard',
+  user: 'user',
+  business: 'business',
+  report: 'report',
+  config: 'config',
+  chevronRight: 'chevron-right',
+  chevronLeft: 'chevron-left',
+  chevronDown: 'chevron-down',
+  chevronUp: 'chevron-up'
 }
 
 export const mapIcon = (type) => `${ICONS_ASSETS_PATH}/${iconMap[type]}.svg`
