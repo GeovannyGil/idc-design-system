@@ -16,7 +16,8 @@ export const iconMap = {
   chevronRight: 'chevron-right',
   chevronLeft: 'chevron-left',
   chevronDown: 'chevron-down',
-  chevronUp: 'chevron-up'
+  chevronUp: 'chevron-up',
+  search: 'search'
 }
 
 export const mapIcon = (type) => `${ICONS_ASSETS_PATH}/${iconMap[type]}.svg`

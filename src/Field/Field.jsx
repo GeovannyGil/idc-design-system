@@ -15,7 +15,7 @@ const FieldContainer = styled.div`
   width: 100%;
 `
 
-const FieldInputContaier = styled.div`
+export const FieldInputContaier = styled.div`
   width: 100%;
   padding: 10px 16px;
   border-radius: ${misc.borderRadius.sm};
