@@ -32,7 +32,6 @@ const SidebarButttonCollapse = styled.button`
   }
 
   &:hover {
-    cursor: pointer;
     & svg path {
       fill: ${colors.neutral[500]};
     }
