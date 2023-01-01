@@ -18,10 +18,16 @@ const ContainerSidebar = styled.div`
 `
 
 export const base = () => {
-  const [condensed, setCondensed] = useState(false)
+  const [isCollapsed, setCollapsed] = useState(false)
   return (
     <ContainerSidebar>
-      <SidebarMain collapsed={{ condensed, setCondensed }}>
+      <SidebarMain collapsed={
+        {
+          isCollapsed,
+          setCollapsed
+        }
+      }
+      >
         <SidebarSection>
           <SidebarNavLink to='/dashboard' icon={<Icon type='dashboard' />} label='Inicio' />
         </SidebarSection>

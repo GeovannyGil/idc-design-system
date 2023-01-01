@@ -25,7 +25,7 @@ const SidebarButttonCollapse = styled.button`
     fill: ${colors.neutral[400]};
     transition: all 0.2s ease;
 
-    ${({ collapsed }) => collapsed && `
+    ${({ isCollapsed }) => isCollapsed && `
         transform: rotate(180deg);
         transform-origin: center;
     `}
@@ -108,24 +108,28 @@ const SidebarWrapper = styled.nav`
   z-index: ${misc.zIndex[20]};
   transition: all 0.2s ease;
 
-  ${({ condensed }) =>
-  !condensed
-    ? 'max-width: 225px;'
+  ${({ isCollapsed }) =>
+  !isCollapsed
+    ? `
+      min-width: 225px;
+      max-width: 225px;
+    `
     : `
+      min-width: 65px;
       max-width: 65px;
     `
   }
 `
 
 export const SidebarMain = ({ collapsed, to, children }) => {
-  const { condensed, setCondensed } = collapsed
+  const { isCollapsed, setCollapsed } = collapsed
   const onCollapse = () => {
-    setCondensed(!condensed)
+    setCollapsed(!isCollapsed)
   }
 
   return (
-    <SideBarMainContext.Provider value={condensed}>
-      <SidebarWrapper condensed={condensed}>
+    <SideBarMainContext.Provider value={{ isCollapsed }}>
+      <SidebarWrapper isCollapsed={isCollapsed}>
         <SidebarBrand>
           <SidebarLogo>
             <NavLink to={to}>
@@ -140,7 +144,7 @@ export const SidebarMain = ({ collapsed, to, children }) => {
         <SidebarLinks>
           {children}
         </SidebarLinks>
-        <SidebarButttonCollapse onClick={onCollapse} collapsed={condensed}>
+        <SidebarButttonCollapse onClick={onCollapse} isCollapsed={isCollapsed}>
           <Icon type='chevronLeft' />
         </SidebarButttonCollapse>
       </SidebarWrapper>
@@ -151,11 +155,17 @@ export const SidebarMain = ({ collapsed, to, children }) => {
 SidebarMain.propTypes = {
   to: PropTypes.string,
   children: PropTypes.node,
-  collapsed: PropTypes.object
+  collapsed: PropTypes.shape({
+    isCollapsed: PropTypes.bool.isRequired,
+    setCollapsed: PropTypes.func.isRequired
+  }).isRequired
 }
 
 SidebarMain.defaultProps = {
   to: '/',
   children: null,
-  collapsed: {}
+  collapsed: {
+    isCollapsed: false,
+    setCollapsed: () => { }
+  }
 }

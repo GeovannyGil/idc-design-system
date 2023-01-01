@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { colors, fonts, misc } from '../tokens'
 import { Icon } from '../Icon'
 import { useSidebarMainContext } from './SidebarContext'
+import clsx from 'clsx'
 
 const SidebarNavLinkContent = styled.span`
   font-size: ${fonts.size.sm};
@@ -36,8 +37,11 @@ const SidebarNavLinkWrapper = styled(NavLink)`
   text-decoration: none;
   overflow: hidden;
   transition: all 0.2s ease;
+  padding: 6px 10px;
 
-  ${({ collapsed }) => !collapsed ? 'padding: 6px 10px;' : 'padding: 6px 8px;'}
+  &.is-collapsed {
+    padding: 6px 8px;
+  }
 
   &:hover {
     background-color: ${colors.neutral[100]};
@@ -69,10 +73,14 @@ const SidebarNavLinkWrapper = styled(NavLink)`
 `
 
 export const SidebarNavLink = ({ icon, label, to }) => {
-  const isCollapsed = useSidebarMainContext()
+  const { isCollapsed } = useSidebarMainContext()
 
   return (
-    <SidebarNavLinkWrapper to={to} collapsed={isCollapsed}>
+    <SidebarNavLinkWrapper
+      to={to} className={clsx({
+        'is-collapsed': isCollapsed
+      })}
+    >
       <SidebarNavLinkIcon>
         {icon}
       </SidebarNavLinkIcon>

@@ -26,15 +26,15 @@ const SidebarSectionWrapper = styled.div`
   gap: 8px;
 
   & ${LabelContent} {
-      ${({ collapsed }) => !collapsed ? 'display: block;' : 'display: none;'}
+    ${({ isCollapsed }) => !isCollapsed ? 'display: block;' : 'display: none;'}
   }
 `
 
 export const SidebarSection = ({ label, children }) => {
-  const isCollapsed = useSidebarMainContext()
+  const { isCollapsed } = useSidebarMainContext()
 
   return (
-    <SidebarSectionWrapper collapsed={isCollapsed}>
+    <SidebarSectionWrapper isCollapsed={isCollapsed}>
       {
         label && <LabelContent>{label}</LabelContent>
       }
