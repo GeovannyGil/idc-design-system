@@ -2,17 +2,7 @@
   "name": "idcform-design-system",
   "version": "0.1.11",
   "description": "IDC FORM Design System",
-  "main": "dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./*": "./dist/*"
-  },
-  "files": [
-    "dist"
-  ],
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006 -s ./assets",
@@ -36,10 +26,14 @@
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
     "@storybook/addon-links": "^6.5.14",
+    "@storybook/addons": "6.5.15",
+    "@storybook/builder-vite": "0.2.6",
     "@storybook/builder-webpack4": "^6.5.14",
     "@storybook/manager-webpack4": "^6.5.14",
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
+    "@storybook/theming": "6.5.15",
+    "@vitejs/plugin-react": "3.0.0",
     "auto": "^10.37.6",
     "babel-loader": "^8.3.0",
     "cross-env": "^7.0.3",
@@ -54,7 +48,8 @@
     "prettier-config-standard": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "standard": "^17.0.0"
+    "standard": "^17.0.0",
+    "tiny-glob": "0.2.9"
   },
   "dependencies": {
     "clsx": "^1.2.1",
@@ -62,7 +57,8 @@
     "react-router-dom": "^6.6.1",
     "react-svg": "^15.1.17",
     "snazzy": "^9.0.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "vite": "4.0.3"
   },
   "eslintConfig": {
     "standard": "node_modules/standard/eslintrc.json"
