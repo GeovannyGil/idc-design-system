@@ -15,7 +15,7 @@ export default create({
   barBg: colors.neutral[100],
 
   brandTitle: 'IDC FORM DESIGN SYSTEM',
-  brandUrl: 'https://idcform-ds.geovannygil.com',
+  brandUrl: 'https://idcform-ds.geovannygil.dev',
   brandImage: '/images/brandImage.png',
   brandTarget: '_self',
 });
