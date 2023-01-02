@@ -66,7 +66,8 @@ const colors = {
   },
   base: {
     white: '#FFFFFF',
-    black: '#000000'
+    black: '#000000',
+    background: '#F6F6F9'
   }
 }
 

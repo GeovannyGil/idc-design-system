@@ -73,14 +73,19 @@ const TypographyWrapper = styled.span`
     text-overflow: ellipsis;
     white-space: nowrap;
   `}
+
+  ${({ color }) => color && `
+    color: ${color};
+  `}
 `
 
-export const Typography = ({ children, variant, highlight, ellipsis, ...props }) => {
+export const Typography = ({ children, variant, highlight, ellipsis, color, ...props }) => {
   return (
     <TypographyWrapper
       variant={variant}
       highlight={highlight}
       ellipsis={ellipsis}
+      color={color}
       {...props}
     >
       {children}
@@ -92,12 +97,14 @@ Typography.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(TYPE_TEXT_VARIANTS),
   highlight: PropTypes.bool,
-  ellipsis: PropTypes.bool
+  ellipsis: PropTypes.bool,
+  color: PropTypes.string
 }
 
 Typography.defaultProps = {
   variant: 'HEADER1',
   children: 'Typography',
   highlight: false,
-  ellipsis: false
+  ellipsis: false,
+  color: colors.neutral[800]
 }

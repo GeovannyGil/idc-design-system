@@ -3,7 +3,12 @@ import { Select } from './Select'
 
 export default {
   title: 'Component/Select',
-  component: Select
+  component: Select,
+  parameters: {
+    status: {
+      type: 'beta'
+    }
+  }
 }
 
 const Template = (args) => <Select {...args} />
