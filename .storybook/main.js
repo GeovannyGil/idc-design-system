@@ -10,8 +10,5 @@ module.exports = {
     '@etchteam/storybook-addon-status'
   ],
   "framework": "@storybook/react",
-  "staticDir": ['../assets'],
-  // "core": {
-  //   builder: '@storybook/builder-vite'
-  // }
+  "staticDir": ['../assets']
 }
