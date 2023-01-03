@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { LoadingWrapper } from '../Button'
 import { Icon } from '../Icon'
 import { colors, misc } from '../tokens'
+import { focusStyle } from '../shared/utils'
 
 const IconButtonWrapper = styled.button`
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,6 @@ const IconButtonWrapper = styled.button`
   border-radius: ${misc.borderRadius.sm};
   cursor: pointer;
   transition: all 0.3s ease;
-  outline: none;
   width: 2rem;
   height: 2rem;
   background-color: ${colors.base.white};
@@ -38,33 +37,7 @@ const IconButtonWrapper = styled.button`
     pointer-events: none;
   }
 
-  &:after {
-    transition-property: all;
-    transition-duration: 0.2s;
-    border-radius: ${misc.borderRadius.md};
-    content: '';
-    position: absolute;
-    top: -4px;
-    bottom: -4px;
-    left: -4px;
-    right: -4px;
-    border: 2px solid transparent;
-  }
-
-  &:focus-visible {
-    outline: none;
-
-    &:after {
-      border-radius: ${misc.borderRadius.md};
-      content: '';
-      position: absolute;
-      top: -5px;
-      bottom: -5px;
-      left: -5px;
-      right: -5px;
-      border: 2px solid ${colors.primary[400]};
-    }
-  }
+  ${focusStyle}
 
   &:hover {
     border-color: ${colors.neutral[300]};

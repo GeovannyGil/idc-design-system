@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { TYPE_TEXT_VARIANTS } from './constants'
 import { Typography } from './Typography'
 
 const ContainerTypography = styled.div`
@@ -14,19 +13,12 @@ const ContainerTypography = styled.div`
 
 export default {
   title: 'Component/Typography',
-  component: Typography,
-  argTypes: {
-    variant: {
-      options: TYPE_TEXT_VARIANTS,
-      control: 'select'
-    }
-  }
+  component: Typography
 }
 
 export const Default = (args) => <Typography {...args} />
 
 Default.args = {
-  variant: 'HEADER1',
   children: 'Typography'
 }
 
@@ -46,8 +38,3 @@ export const Variants = () => (
     <Typography variant='BODY' ellipsis>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface. It is used as a placeholder because the actual content is not yet available, or because it is being used to demonstrate the layout of a document or a typeface. Lorem ipsum text is typically used in the design, printing, and publishing industries, as well as by web designers and developers. The text is </Typography>
   </ContainerTypography>
 )
-
-// Default.args = {
-//   variant: 'HEADING1',
-//   children: 'Typography'
-// }

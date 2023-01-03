@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon'
 import { colors, misc } from '../tokens'
+import { focusStyle } from '../shared/utils'
 
 const rotation = keyframes`
   from {
@@ -29,8 +30,6 @@ const ButtonWrapper = styled.button`
   font-weight: 600;
   line-height: 1.14;
   min-width: max-content;
-  outline: none;
-  position: relative;
   gap: 8px;
 
   &:disabled,
@@ -49,35 +48,9 @@ const ButtonWrapper = styled.button`
     pointer-events: none;
   }
 
-  &:after {
-    transition-property: all;
-    transition-duration: 0.2s;
-    border-radius: ${misc.borderRadius.md};
-    content: '';
-    position: absolute;
-    top: -4px;
-    bottom: -4px;
-    left: -4px;
-    right: -4px;
-    border: 2px solid transparent;
-  }
+  ${focusStyle}
 
-  &:focus-visible {
-    outline: none;
-
-    &:after {
-      border-radius: ${misc.borderRadius.md};
-      content: '';
-      position: absolute;
-      top: -5px;
-      bottom: -5px;
-      left: -5px;
-      right: -5px;
-      border: 2px solid ${colors.primary[400]};
-    }
-  }
-
-    ${({ size }) => {
+  ${({ size }) => {
     switch (size) {
       case 'small':
         return `
@@ -112,6 +85,7 @@ const ButtonWrapper = styled.button`
     }
   }}
 
+  // TODO: Refactor this code styles same typography styles
   ${({ variant }) => {
     switch (variant) {
       case 'primary':
@@ -248,7 +222,6 @@ const ButtonWrapper = styled.button`
   ${({ fullWidth }) => fullWidth && `
     width: 100%;
   `}
-
 `
 
 export const Button = React.forwardRef(

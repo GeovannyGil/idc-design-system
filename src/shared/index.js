@@ -1,3 +1,2 @@
-import { GlobalStyle } from './global'
-
-export { GlobalStyle }
+export * from './global'
+export * from './utils'

@@ -5,6 +5,7 @@ import { FieldLabel } from './FieldLabel'
 import { FieldHint } from './FieldHint'
 import { FieldError } from './FieldError'
 import { colors, misc } from '../tokens'
+import { focusInputStyle } from '../shared/utils'
 
 const FieldContainer = styled.div`
   display: flex;
@@ -26,15 +27,7 @@ export const FieldInputContaier = styled.div`
     backgroundColor: colors.neutral[100]
   }}
 
-  ${({ error }) =>
-  error && {
-    border: `1px solid ${colors.danger[500]}`
-  }}
-
-  &:focus-within {
-    border: 1px solid ${colors.primary[400]};
-    box-shadow: 0 0 0 2px ${colors.primary[400]};
-  }
+  ${({ error }) => focusInputStyle(error)}
 
   & input {
     width: 100%;
