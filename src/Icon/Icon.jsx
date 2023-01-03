@@ -16,8 +16,13 @@ const IconWrapper = styled(ReactSVG)`
 
   height: ${({ size }) => size}px;
   width: ${({ size }) => size}px;
+  min-height: ${({ size }) => size}px;
+  min-width: ${({ size }) => size}px;
 
   & span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
 
@@ -27,10 +32,6 @@ const IconWrapper = styled(ReactSVG)`
     }
   }
 `
-
-// & path {
-//   fill: ${({ color }) => color};
-//     }
 
 export const Icon = ({ type, size, className, ...props }) => {
   return (
