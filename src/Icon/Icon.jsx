@@ -14,10 +14,14 @@ const IconWrapper = styled(ReactSVG)`
   align-items: center;
   justify-content: center;
 
-  height: ${({ size }) => size}px;
   width: ${({ size }) => size}px;
-  min-height: ${({ size }) => size}px;
-  min-width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
+  flex-basis: ${({ size }) => size}px;
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  /* min-height: ${({ size }) => size}px;
+  min-width: ${({ size }) => size}px; */
 
   & span{
     display: flex;
@@ -34,6 +38,7 @@ const IconWrapper = styled(ReactSVG)`
 `
 
 export const Icon = ({ type, size, className, ...props }) => {
+  console.log('Icon', size)
   return (
     <IconWrapper
       src={mapIcon(type)}
