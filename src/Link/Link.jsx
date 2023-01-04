@@ -52,7 +52,7 @@ const LinkWrapper = styled.a`
   ${focusStyle}
 `
 
-export const Link = forwardRef(({ to, variant, highlight, target, rel, href, children, disabled, hasIcon }, ref) => {
+export const Link = forwardRef(({ to, variant, backIcon, highlight, target, rel, href, children, disabled, hasIcon }, ref) => {
   return (
     <LinkWrapper
       as={to && !disabled ? NavLink : 'a'}
@@ -66,7 +66,7 @@ export const Link = forwardRef(({ to, variant, highlight, target, rel, href, chi
       variant={variant}
       highlight={highlight}
     >
-      {children} {hasIcon && <Icon type='linkExternal' />}
+      {backIcon && <Icon type='arrowBack' />} {children} {hasIcon && <Icon type='linkExternal' />}
     </LinkWrapper>
   )
 })
@@ -94,7 +94,8 @@ Link.propTypes = {
     }
 
     return undefined
-  }
+  },
+  backIcon: PropTypes.bool
 }
 
 Link.defaultProps = {
@@ -103,5 +104,6 @@ Link.defaultProps = {
   disabled: false,
   hasIcon: false,
   href: undefined,
-  to: undefined
+  to: undefined,
+  backIcon: false
 }

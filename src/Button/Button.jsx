@@ -29,7 +29,7 @@ const ButtonWrapper = styled.button`
   transition: all 0.3s ease;
   font-weight: 600;
   line-height: 1.14;
-  min-width: max-content;
+  /* min-width: max-content; */
   gap: 8px;
 
   &:disabled,
@@ -56,7 +56,6 @@ const ButtonWrapper = styled.button`
         return `
             padding: 8px 16px;
             font-size: 0.75rem;
-            height: 2rem;
 
             & .iconWrapper {
               width: 16px;
@@ -66,7 +65,6 @@ const ButtonWrapper = styled.button`
         return `
             padding: 12px 16px;
             font-size: 1rem;
-            height: 2.5rem;
 
             & .iconWrapper {
               width: 22px;
@@ -76,7 +74,6 @@ const ButtonWrapper = styled.button`
         return `
             padding: 10px 16px;
             font-size: 0.875rem;
-            height: 2.25rem;
 
             & .iconWrapper {
               width: 20px;
@@ -222,10 +219,30 @@ const ButtonWrapper = styled.button`
   ${({ fullWidth }) => fullWidth && `
     width: 100%;
   `}
+
+  ${({ align }) => {
+    switch (align) {
+      case 'left':
+        return `
+          justify-content: flex-start;
+          text-align: left;
+        `
+      case 'right':
+        return `
+          justify-content: flex-end;
+          text-align: right;
+        `
+      default:
+        return `
+          justify-content: center;
+          text-align: center;
+        `
+    }
+  }}
 `
 
 export const Button = React.forwardRef(
-  ({ children, variant, size, disabled, onClick, fullWidth, loading, icon, ...props }, ref) => {
+  ({ children, variant, size, align, disabled, onClick, fullWidth, loading, icon, ...props }, ref) => {
     const isDisabled = disabled || loading
 
     const handleClick = (e) => {
@@ -242,6 +259,7 @@ export const Button = React.forwardRef(
         aria-disabled={isDisabled}
         disabled={isDisabled}
         onClick={handleClick}
+        align={align}
         {...props}
       >
         {(icon || loading) &&
@@ -272,7 +290,8 @@ Button.propTypes = {
   fullWidth: PropTypes.bool,
   onClick: PropTypes.func,
   loading: PropTypes.bool,
-  icon: PropTypes.element
+  icon: PropTypes.element,
+  align: PropTypes.oneOf(['left', 'center', 'right'])
 }
 
 Button.defaultProps = {
@@ -283,5 +302,6 @@ Button.defaultProps = {
   fullWidth: false,
   onClick: undefined,
   loading: false,
-  icon: undefined
+  icon: undefined,
+  align: 'center'
 }

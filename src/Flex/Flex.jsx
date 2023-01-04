@@ -12,6 +12,7 @@ export const Flex = styled.div`
   flex-wrap: ${({ wrap }) => wrap};
   gap: ${({ gap }) => spacing[gap] || gap};
   justify-content: ${({ justify }) => justify};
+  padding: ${({ padding }) => spacing[padding] || padding};
 `
 
 Flex.defaultProps = {
@@ -24,7 +25,8 @@ Flex.defaultProps = {
   reverse: false,
   shrink: undefined,
   wrap: undefined,
-  width: 'auto'
+  width: 'auto',
+  padding: undefined
 }
 
 export const flexPropTypes = {
@@ -41,5 +43,10 @@ export const flexPropTypes = {
   reverse: PropTypes.bool,
   shrink: PropTypes.number,
   wrap: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  padding: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.string
+  ])
 }

@@ -99,6 +99,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *, *:before, *:after {
-  box-sizing: inherit;
-}
+    box-sizing: inherit;
+  }
+
+  .lock-body-scroll {
+    height: 100vh;
+    overflow-y: hidden;
+  }
 `

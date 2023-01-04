@@ -14,3 +14,11 @@ Default.args = {
   color: 'green',
   state: 'Active'
 }
+
+export const Box = Template.bind({})
+
+Box.args = {
+  color: '#FF0000',
+  state: 'Active',
+  isBox: true
+}

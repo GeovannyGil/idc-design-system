@@ -21,7 +21,7 @@ const Container = styled.div`
 export const Default = () => {
   return (
     <Container>
-      <SubNav title='Persona Individual'>
+      <SubNav viewport title='Persona Individual'>
         <SubNavSection>
           <SubNavLink icon={<Icon type='print' />} to='/print'>Imprimir</SubNavLink>
           <SubNavLink icon={<Icon type='history' />} to='/history'>Historial de estados</SubNavLink>
@@ -41,7 +41,7 @@ export const Default = () => {
         <SubNavSectionLink to='/identificationValidation'>Cédula de verificación y validación</SubNavSectionLink>
         <SubNavSectionLink to='/kycForm'>KYC FORM</SubNavSectionLink>
       </SubNav>
-      <SubNav title='Persona Jurídica'>
+      <SubNav viewport title='Persona Jurídica'>
         <SubNavSection>
           <SubNavLink icon={<Icon type='print' />} to='/print'>Imprimir</SubNavLink>
           <SubNavLink icon={<Icon type='history' />} to='/history'>Historial de estados</SubNavLink>
@@ -61,7 +61,7 @@ export const Default = () => {
         <SubNavSectionLink to='/benefitiariesFinal'>Beneficiario final</SubNavSectionLink>
         {/* </SubNavSection> */}
       </SubNav>
-      <SubNav title='Empresa'>
+      <SubNav viewport title='Empresa'>
         <SubNavSection label='Administración usuarios'>
           <SubNavLink icon={<Icon type='show' />} to='/roles'>Roles</SubNavLink>
           <SubNavLink icon={<Icon type='userCircle' />} to='/users'>Usuarios</SubNavLink>

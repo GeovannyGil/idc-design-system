@@ -43,16 +43,18 @@ const SubNavWrapper = styled.div`
   background: ${colors.neutral[100]};
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: ${({ viewport }) => viewport ? '100vh' : '100%'};
   overflow: hidden;
   border-right: 1px solid ${colors.neutral[200]};
   z-index: 1;
   padding: 12px 0 12px 12px;
 `
 
-export const SubNav = ({ title, children }) => {
+export const SubNav = ({ title, viewport, children }) => {
   return (
-    <SubNavWrapper>
+    <SubNavWrapper
+      viewport={viewport}
+    >
       <SubNavHeader>
         <Typography color={colors.neutral[800]} variant='HEADER2'>{title}</Typography>
         <div />
@@ -66,10 +68,12 @@ export const SubNav = ({ title, children }) => {
 
 SubNav.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  viewport: PropTypes.bool
 }
 
 SubNav.defaultProps = {
   title: 'SubNav',
-  children: null
+  children: null,
+  viewport: false
 }

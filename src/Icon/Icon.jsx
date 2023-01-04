@@ -10,7 +10,7 @@ const IconWrapper = styled(ReactSVG)`
   height: 24px; */
   padding: 2px;
   overflow: hidden;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
@@ -33,13 +33,18 @@ const IconWrapper = styled(ReactSVG)`
     & svg {
       width: 100%;
       height: 100%;
+
+      & path {
+        fill: ${({ color }) => color};
+      }
     }
   }
 `
 
-export const Icon = ({ type, size, className, ...props }) => {
+export const Icon = ({ type, size, className, color, ...props }) => {
   return (
     <IconWrapper
+      color={color}
       src={mapIcon(type)}
       wrapper='span'
       size={size}
@@ -49,12 +54,14 @@ export const Icon = ({ type, size, className, ...props }) => {
 }
 
 Icon.propTypes = {
+  color: PropTypes.string,
   type: PropTypes.string.isRequired,
   className: PropTypes.string,
   size: PropTypes.number
 }
 
 Icon.defaultProps = {
+  color: 'currentColor',
   type: 'loader',
   className: '',
   size: 24
