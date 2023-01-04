@@ -62,7 +62,6 @@ export const StylesTypography = (variant, highlight, ellipsis) => {
   if (ellipsis) {
     styles = `${styles}\tdisplay: block;\toverflow: hidden;\ttext-overflow: ellipsis;\twhite-space: nowrap;`
   }
-  // console.log(variant, styles)
   return styles
 }
 

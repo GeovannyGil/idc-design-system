@@ -1,6 +1,6 @@
 {
   "name": "idcform-design-system",
-  "version": "0.1.11",
+  "version": "0.1.2",
   "description": "IDC FORM Design System",
   "main": "src/index.js",
   "scripts": {
