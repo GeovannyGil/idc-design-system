@@ -38,7 +38,6 @@ const IconWrapper = styled(ReactSVG)`
 `
 
 export const Icon = ({ type, size, className, ...props }) => {
-  console.log('Icon', size)
   return (
     <IconWrapper
       src={mapIcon(type)}

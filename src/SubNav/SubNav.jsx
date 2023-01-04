@@ -38,6 +38,7 @@ const SubNavHeader = styled.div`
 export const subNavWidth = `${232 / 16}rem`
 
 const SubNavWrapper = styled.div`
+  min-width: ${subNavWidth};
   width: ${subNavWidth};
   background: ${colors.neutral[100]};
   position: sticky;

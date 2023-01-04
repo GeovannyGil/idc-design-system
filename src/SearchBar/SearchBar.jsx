@@ -12,19 +12,14 @@ const IconSearch = styled(Icon)`
   }
 `
 
-// const IconClose = styled(Icon)`
-//   margin: 0 4px;
-//   cursor: pointer;
-//   visibility: hidden;
-//   & svg path {
-//     fill: ${colors.neutral[400]};
-//   }
-// `
-
 const SearchBarContainer = styled(FieldInputContaier)`
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: ${colors.base.white};
+  width: 250px;
+
+  ${({ fullWidth }) => fullWidth && 'width: 100%;'}
 
   & input[type='search']::-webkit-search-decoration {
     appearance: none;
@@ -54,15 +49,16 @@ const SearchBarContainer = styled(FieldInputContaier)`
   }
 `
 
-export const SearchBar = forwardRef(({ name, size, value, onClear, placeholder, disabled, ...props }, ref) => {
+export const SearchBar = forwardRef(({ name, size, value, onClear, placeholder, disabled, fullWidth, ...props }, ref) => {
   return (
-    <div>
+    <>
       <SearchBarContainer
         disabled={disabled}
         aria-disabled={disabled}
         size={size}
+        fullWidth={fullWidth}
       >
-        <IconSearch type='search' size={20} />
+        <IconSearch type='search' size={18} />
         <input
           type='search'
           placeholder={placeholder}
@@ -75,7 +71,7 @@ export const SearchBar = forwardRef(({ name, size, value, onClear, placeholder, 
         />
         {/* <IconClose type='close' /> */}
       </SearchBarContainer>
-    </div>
+    </>
   )
 })
 
@@ -87,7 +83,8 @@ SearchBar.propTypes = {
   value: PropTypes.string,
   onClear: PropTypes.func,
   placeholder: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  fullWidth: PropTypes.bool
 }
 
 SearchBar.defaultProps = {
@@ -96,5 +93,6 @@ SearchBar.defaultProps = {
   disabled: false,
   size: 'md',
   value: '',
-  onClear: undefined
+  onClear: undefined,
+  fullWidth: false
 }
