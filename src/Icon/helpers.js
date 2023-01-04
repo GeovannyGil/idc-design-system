@@ -35,7 +35,15 @@ export const iconMap = {
   mapPin: 'map-pin',
   purchaseTag: 'purchase-tag',
   graduation: 'graduation',
-  group: 'group'
+  group: 'group',
+  edit: 'edit',
+  trash: 'trash',
+  userPin: 'user-pin',
+  plus: 'plus',
+  export: 'export',
+  arrowBack: 'arrow-back',
+  paperPlane: 'paper-plane',
+  pause: 'pause'
 }
 
 export const mapIcon = (type) => `${ICONS_ASSETS_PATH}/${iconMap[type]}.svg`

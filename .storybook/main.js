@@ -10,5 +10,5 @@ module.exports = {
     '@etchteam/storybook-addon-status'
   ],
   "framework": "@storybook/react",
-  "staticDir": ['../assets']
+  "staticDir": ['../public']
 }

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006 -s ./assets",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "format": "standard --fix",
     "lint": "eslint . --fix",
     "build-storybook": "build-storybook",
