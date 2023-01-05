@@ -1,6 +1,6 @@
 {
   "name": "idcform-design-system",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "IDC FORM Design System",
   "main": "src/index.js",
   "scripts": {
@@ -53,6 +53,7 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "eslint-plugin-react": "^7.31.11",
+    "idcform-design-system": "^0.1.5",
     "react-router-dom": "^6.6.1",
     "react-styled-flexboxgrid": "3.2.1",
     "react-svg": "^15.1.17",
