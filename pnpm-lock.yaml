@@ -26,7 +26,6 @@ specifiers:
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-react: ^7.31.11
   husky: '>=7'
-  idcform-design-system: ^0.1.5
   lint-staged: '>=10'
   prettier: ^2.8.1
   prettier-config-standard: ^5.0.0
@@ -43,7 +42,6 @@ specifiers:
 dependencies:
   clsx: 1.2.1
   eslint-plugin-react: 7.31.11_eslint@8.30.0
-  idcform-design-system: link:node_modules/idcform-design-system
   react-router-dom: 6.6.1_biqbaboplfbrettd7655fr4n2y
   react-styled-flexboxgrid: 3.2.1_56nicwxcbpehznvjhlpvpy75bu
   react-svg: 15.1.17_biqbaboplfbrettd7655fr4n2y

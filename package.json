@@ -53,7 +53,6 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "eslint-plugin-react": "^7.31.11",
-    "idcform-design-system": "^0.1.5",
     "react-router-dom": "^6.6.1",
     "react-styled-flexboxgrid": "3.2.1",
     "react-svg": "^15.1.17",
