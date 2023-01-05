@@ -22,6 +22,7 @@ const SubNavSectionLinkWrapper = styled(NavLink)`
 
   & label {
     width: 90%;
+    cursor: pointer;
   }
 
   /* & .iconWrapper {

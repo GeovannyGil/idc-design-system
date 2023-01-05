@@ -26,6 +26,17 @@ const SearchBarContainer = styled(FieldInputContaier)`
     -webkit-appearance: none;
   }
 
+  &[aria-disabled='true'] {
+    background-color: ${colors.neutral[100]};
+    cursor: not-allowed;
+
+    & ${IconSearch} {
+      & svg path {
+        fill: ${colors.neutral[400]};
+      }
+    }
+  }
+
   ${({ size }) => {
     switch (size) {
       case 'sm':

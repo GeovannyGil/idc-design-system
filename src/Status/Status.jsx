@@ -22,6 +22,7 @@ export const StatusBadge = styled.div`
     height: 6px;
     border-radius: ${misc.borderRadius.full};
     background-color: ${({ color }) => color};
+    flex-shrink: 0;
   }
 
   & label {

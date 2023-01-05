@@ -31,6 +31,7 @@ const ButtonWrapper = styled.button`
   line-height: 1.14;
   /* min-width: max-content; */
   gap: 8px;
+  ${({ nowrap }) => (nowrap ? 'white-space: nowrap;' : 'white-space: normal;')}
 
   &:disabled,
   &:disabled:hover {
@@ -58,7 +59,8 @@ const ButtonWrapper = styled.button`
             font-size: 0.75rem;
 
             & .iconWrapper {
-              width: 16px;
+              width: 19px;
+              height: 19px;
             }
           `
       case 'large':
@@ -68,6 +70,7 @@ const ButtonWrapper = styled.button`
 
             & .iconWrapper {
               width: 22px;
+              height: 22px;
             }
           `
       default:
@@ -77,6 +80,7 @@ const ButtonWrapper = styled.button`
 
             & .iconWrapper {
               width: 20px;
+              height: 20px;
             }
           `
     }
@@ -242,7 +246,7 @@ const ButtonWrapper = styled.button`
 `
 
 export const Button = React.forwardRef(
-  ({ children, variant, size, align, disabled, onClick, fullWidth, loading, icon, ...props }, ref) => {
+  ({ children, variant, size, align, type, disabled, onClick, fullWidth, loading, icon, nowrap, ...props }, ref) => {
     const isDisabled = disabled || loading
 
     const handleClick = (e) => {
@@ -260,6 +264,8 @@ export const Button = React.forwardRef(
         disabled={isDisabled}
         onClick={handleClick}
         align={align}
+        nowrap={nowrap}
+        type={type}
         {...props}
       >
         {(icon || loading) &&
@@ -291,7 +297,9 @@ Button.propTypes = {
   onClick: PropTypes.func,
   loading: PropTypes.bool,
   icon: PropTypes.element,
-  align: PropTypes.oneOf(['left', 'center', 'right'])
+  align: PropTypes.oneOf(['left', 'center', 'right']),
+  nowrap: PropTypes.bool,
+  type: PropTypes.oneOf(['button', 'submit', 'reset'])
 }
 
 Button.defaultProps = {
@@ -303,5 +311,7 @@ Button.defaultProps = {
   onClick: undefined,
   loading: false,
   icon: undefined,
-  align: 'center'
+  align: 'center',
+  nowrap: false,
+  type: 'button'
 }

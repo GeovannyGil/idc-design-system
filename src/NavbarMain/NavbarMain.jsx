@@ -111,6 +111,7 @@ const NavbarMainWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  overflow: hidden;
 `
 
 export const NavbarMain = ({ nameRoute, user, propsSearchForm, ...props }) => {
@@ -124,6 +125,7 @@ export const NavbarMain = ({ nameRoute, user, propsSearchForm, ...props }) => {
           {...propsSearchForm}
         >
           <SearchBar
+            fullWidth
             {...props}
           />
         </SearchForm>

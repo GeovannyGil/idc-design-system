@@ -17,6 +17,7 @@ const SubNavLinkWrapper = styled(NavLink)`
   ${StylesTypography('SMALL')}
   line-height: 16px;
   color: ${colors.neutral[700]};
+  cursor: pointer;
 
   & .iconWrapper {
     width: 20px;
