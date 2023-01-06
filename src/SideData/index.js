@@ -1,1 +1,6 @@
 export * from './SideData'
+export * from './SideDataSection'
+export * from './SideDataInfo'
+export * from './SideDataDropdown'
+export * from './SideDataItem'
+export * from './SideDataSubSection'

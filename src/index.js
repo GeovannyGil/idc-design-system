@@ -3,6 +3,7 @@
 export * from './tokens'
 export * from './shared'
 
+export * from './Accordion'
 export * from './Attachments'
 export * from './Avatar'
 export * from './Badge'

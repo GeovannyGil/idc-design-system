@@ -34,6 +34,7 @@ specifiers:
   react-router-dom: ^6.6.1
   react-styled-flexboxgrid: 3.2.1
   react-svg: ^15.1.17
+  react-transition-group: 4.4.5
   snazzy: ^9.0.0
   standard: ^17.0.0
   styled-components: ^5.3.6
@@ -45,6 +46,7 @@ dependencies:
   react-router-dom: 6.6.1_biqbaboplfbrettd7655fr4n2y
   react-styled-flexboxgrid: 3.2.1_56nicwxcbpehznvjhlpvpy75bu
   react-svg: 15.1.17_biqbaboplfbrettd7655fr4n2y
+  react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
   snazzy: 9.0.0
   styled-components: 5.3.6_biqbaboplfbrettd7655fr4n2y
 
@@ -6686,6 +6688,10 @@ packages:
     hasBin: true
     dev: true
 
+  /csstype/3.1.1:
+    resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
+    dev: false
+
   /currently-unhandled/0.4.1:
     resolution: {integrity: sha512-/fITjgjGU50vjQ4FH6eUoYu+iUoUKIXws2hL15JJpIR+BbTxaXQsMuuyjtNh2WqsSBS5nsaZHFsFecyw5CCAng==}
     engines: {node: '>=0.10.0'}
@@ -6939,6 +6945,13 @@ packages:
     dependencies:
       utila: 0.4.0
     dev: true
+
+  /dom-helpers/5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
+    dependencies:
+      '@babel/runtime': 7.20.6
+      csstype: 3.1.1
+    dev: false
 
   /dom-serializer/1.4.1:
     resolution: {integrity: sha512-VHwB3KfrcOOkelEG2ZOfxqLZdfkil8PtJi4P8N2MMXucZq2yLp75ClViUlOVwyoHEDjYU433Aq+5zWP61+RGag==}
@@ -11219,6 +11232,20 @@ packages:
       '@babel/runtime': 7.20.6
       '@tanem/svg-injector': 10.1.41
       '@types/prop-types': 15.7.5
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-transition-group/4.4.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': 7.20.6
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
