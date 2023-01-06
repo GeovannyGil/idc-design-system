@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import { colors, misc } from '../tokens'
 import { SideDataSection } from './SideDataSection'
 import { SideDataInfo } from './SideDataInfo'
+import { SideDataDropdown } from './SideDataDropdown'
+import { SideDataItem } from './SideDataItem'
+import { SideDataSubSection } from './SideDataSubSection'
 
 const SideDataWrapper = styled.div`
   display: flex;
@@ -39,3 +42,6 @@ SideData.defaultProps = {
 
 SideData.Section = SideDataSection
 SideData.Info = SideDataInfo
+SideData.Dropdown = SideDataDropdown
+SideData.Item = SideDataItem
+SideData.SubSection = SideDataSubSection

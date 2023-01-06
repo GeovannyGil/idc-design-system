@@ -18,3 +18,19 @@ export const Default = () => {
     </SideData>
   )
 }
+
+export const Dropdown = () => {
+  return (
+    <SideData>
+      <SideData.Section title='Relación única'>
+        <SideData.SubSection title='Representante'>
+          <SideData.Item>Payless</SideData.Item>
+        </SideData.SubSection>
+        <SideData.Dropdown open title='Información'>
+          <SideData.Item>Payless</SideData.Item>
+          <SideData.Item>Grupo Diveco</SideData.Item>
+        </SideData.Dropdown>
+      </SideData.Section>
+    </SideData>
+  )
+}
