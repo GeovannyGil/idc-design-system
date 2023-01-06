@@ -4,7 +4,7 @@ import spacing from '../tokens/spacing'
 
 export const Flex = styled.div`
   display: ${({ inline }) => inline ? 'inline-flex' : 'flex'};
-  width: ${({ width }) => width};
+  width: ${({ width }) => width || '100%'};
   align-items: ${({ align }) => align};
   flex-direction: ${({ direction }) => direction};
   flex-shrink: ${({ shrink }) => shrink};
@@ -13,6 +13,9 @@ export const Flex = styled.div`
   gap: ${({ gap }) => spacing[gap] || gap};
   justify-content: ${({ justify }) => justify};
   padding: ${({ padding }) => spacing[padding] || padding};
+
+  grid-column-start: ${({ colStart }) => colStart || 'auto'};
+  grid-column-end: ${({ colEnd }) => colEnd || 'auto'};
 `
 
 Flex.defaultProps = {
@@ -25,7 +28,7 @@ Flex.defaultProps = {
   reverse: false,
   shrink: undefined,
   wrap: undefined,
-  width: 'auto',
+  width: undefined,
   padding: undefined
 }
 
@@ -43,7 +46,7 @@ export const flexPropTypes = {
   reverse: PropTypes.bool,
   shrink: PropTypes.number,
   wrap: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  width: PropTypes.string,
   padding: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.number),

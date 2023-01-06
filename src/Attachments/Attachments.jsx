@@ -23,6 +23,7 @@ const AttachmentsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   background-color: ${colors.base.white};
   border-radius: ${misc.borderRadius.sm};
   box-shadow: ${misc.shadows.base};
@@ -77,13 +78,13 @@ export const Attachments = ({ type, name, src, description, to, onDownload, onEd
             <IconWrapper>
               <Icon type='folder' color={colors.primary[500]} size={32} />
             </IconWrapper>
-            <Flex direction='column'>
-              <Typography variant='BODY' highlight>{name}</Typography>
+            <Flex direction='column' gap={1}>
+              <Typography lineHeight={1.2} variant='BODY' highlight>{name}</Typography>
               <Typography variant='SMALL'>{description}</Typography>
             </Flex>
           </Flex>
         </Link>
-        <Flex gap={2}>
+        <Flex width='auto' gap={2}>
           <IconButton onClick={handleDownload} icon={<Icon color={colors.neutral[500]} type='download' />} />
           <IconButton onClick={handleEdit} icon={<Icon color={colors.neutral[500]} type='edit' />} />
           <IconButton onClick={handleDelete} icon={<Icon color={colors.neutral[500]} type='trash' />} />
@@ -99,12 +100,12 @@ export const Attachments = ({ type, name, src, description, to, onDownload, onEd
           <IconWrapper>
             <Icon type={`file${typeFile}`} color={TypeProperty.color} size={32} />
           </IconWrapper>
-          <Flex direction='column'>
-            <Typography variant='BODY' highlight>{name}</Typography>
+          <Flex direction='column' gap={1}>
+            <Typography lineHeight={1.2} variant='BODY' highlight>{name}</Typography>
             <Typography variant='SMALL'>{description}</Typography>
           </Flex>
         </Flex>
-        <Flex gap={2}>
+        <Flex width='auto' gap={2}>
           <IconButton onClick={handleDownload} icon={<Icon color={colors.neutral[500]} type='download' />} />
           <IconButton onClick={handleEdit} icon={<Icon color={colors.neutral[500]} type='edit' />} />
           <IconButton onClick={handleDelete} icon={<Icon color={colors.neutral[500]} type='trash' />} />

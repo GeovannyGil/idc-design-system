@@ -28,8 +28,7 @@ export const Default = () => {
           <SubNavLink icon={<Icon type='folder' />} to='/attachments'>Adjuntos</SubNavLink>
         </SubNavSection>
         <SubNavDropdown title='Documento FEIC' open>
-          <SubNavLink to='/dataForm'>Datos del formulario</SubNavLink>
-          <SubNavLink to='/dataPersonal'>Datos personales</SubNavLink>
+          <SubNavLink to='/dataForm'>Datos del formulario y personales</SubNavLink>
           <SubNavLink to='/pepClient'>Datos PEP del cliente</SubNavLink>
           <SubNavLink to='/actionClient'>Actuación del cliente</SubNavLink>
           <SubNavLink to='/infoEconomic'>Información económica</SubNavLink>

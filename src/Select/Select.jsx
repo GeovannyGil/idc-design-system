@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { colors, fonts, misc } from '../tokens'
 import { Icon } from '../Icon'
-import { Field } from '../Field'
+import { Field, FieldError, FieldHint, FieldLabel } from '../Field'
 
 const SelectTagItem = styled.div`
   background-color: ${colors.neutral[100]};
@@ -116,13 +116,13 @@ const SelectInput = styled.div`
 
   ${({ size }) => {
     switch (size) {
-      case 'SMALL':
+      case 'sm':
         return `
-        padding: 10px 16px;
+        padding: 8px 16px;
       `
       default:
         return `
-        padding: 12px 16px;
+        padding: 11px 16px;
       `
     }
   }
@@ -131,10 +131,11 @@ const SelectInput = styled.div`
 
 const SelectWrapper = styled.div`
   text-align: left;
-  border: 1px solid ${colors.neutral[300]};
+  border: 1px solid ${colors.neutral[200]};
   position: relative;
   border-radius: ${misc.borderRadius.sm};
   cursor: pointer;
+  width: 100%;
 
   &:focus-within {
     border: 1px solid ${colors.primary[400]};
@@ -142,12 +143,22 @@ const SelectWrapper = styled.div`
   }
 `
 
-export const Select = ({ size, placeholder, options, isMulti, isSercheable, onChange, ...props }) => {
+const FieldWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+`
+
+export const Select = ({ size, placeholder, required, options, isMulti, isSercheable, onChange, label, hint, error, ...props }) => {
   const [showMenu, setShowMenu] = useState(false)
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null)
   const [searchValue, setSearchValue] = useState('')
   const searchRef = useRef()
   const inputRef = useRef()
+  const stateError = error !== ''
 
   useEffect(() => {
     setSearchValue('')
@@ -245,19 +256,27 @@ export const Select = ({ size, placeholder, options, isMulti, isSercheable, onCh
   }
 
   return (
-    <SelectWrapper>
-      <SelectInput ref={inputRef} onClick={handleInputClick} size={size}>
-        <SelectedValue selected={selectedValue !== null && selectedValue?.length !==
-        0}
-        >{getDisplay()}
-        </SelectedValue>
-        <SelectTools>
-          <SelectTool>
-            <Icon type='arrowDown' size={16} />
-          </SelectTool>
-        </SelectTools>
-      </SelectInput>
+    <FieldWrapper>
       {
+        label &&
+          <FieldLabel
+            labelText={label}
+            required={required}
+          />
+      }
+      <SelectWrapper>
+        <SelectInput ref={inputRef} onClick={handleInputClick} size={size}>
+          <SelectedValue selected={selectedValue !== null && selectedValue?.length !==
+        0}
+          >{getDisplay()}
+          </SelectedValue>
+          <SelectTools>
+            <SelectTool>
+              <Icon type='arrowDown' size={12} />
+            </SelectTool>
+          </SelectTools>
+        </SelectInput>
+        {
         showMenu &&
           <SelectMenu>
             {
@@ -279,7 +298,20 @@ export const Select = ({ size, placeholder, options, isMulti, isSercheable, onCh
             }
           </SelectMenu>
       }
-    </SelectWrapper>
+      </SelectWrapper>
+      {
+        stateError &&
+          <FieldError
+            error={error}
+          />
+      }
+      {
+        hint &&
+          <FieldHint
+            hint={hint}
+          />
+      }
+    </FieldWrapper>
   )
 }
 
@@ -289,17 +321,25 @@ Select.propTypes = {
     label: PropTypes.string,
     value: PropTypes.string
   })),
-  size: PropTypes.oneOf(['SMALL', 'MEDIUM']),
+  size: PropTypes.oneOf(['sm', 'md']),
   isMulti: PropTypes.bool,
   isSercheable: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  error: PropTypes.string,
+  label: PropTypes.string,
+  required: PropTypes.bool,
+  hint: PropTypes.string
 }
 
 Select.defaultProps = {
   placeholder: 'Select',
   options: [],
-  size: 'MEDIUM',
+  size: 'md',
   isMulti: false,
   isSercheable: false,
-  onChange: undefined
+  onChange: undefined,
+  error: undefined,
+  label: undefined,
+  required: false,
+  hint: undefined
 }

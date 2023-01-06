@@ -9,12 +9,14 @@ const TypographyWrapper = styled.span`
   font-size: 1rem;
   ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}
   ${({ variant, highlight }) => StylesTypography(variant, highlight)}
+  ${({ lineHeight }) => lineHeight && `line-height: ${lineHeight};`}
   ${({ color }) => color && `color: ${color};`}
   ${({ ellipsis }) => ellipsis && ellipsisStyle(ellipsis)}
   ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
+  transition: all 0.2s ease-in-out;
 `
 
-export const Typography = ({ as, children, textTransform, textAlign, variant, highlight, ellipsis, color, ...props }) => {
+export const Typography = ({ as, children, lineHeight, textTransform, textAlign, variant, highlight, ellipsis, color, ...props }) => {
   return (
     <TypographyWrapper
       as={as}
@@ -24,6 +26,7 @@ export const Typography = ({ as, children, textTransform, textAlign, variant, hi
       color={color}
       textTransform={textTransform}
       textAlign={textAlign}
+      lineHeight={lineHeight}
       {...props}
     >
       {children}
@@ -33,13 +36,14 @@ export const Typography = ({ as, children, textTransform, textAlign, variant, hi
 
 Typography.propTypes = {
   as: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   variant: PropTypes.oneOf(['HEADER1', 'HEADER2', 'HEADER3', 'SUBTITLE', 'BODY', 'BUTTON', 'SMALL', 'TABLE_LABEL']),
   highlight: PropTypes.bool,
   ellipsis: PropTypes.bool,
   color: PropTypes.string,
   textTransform: PropTypes.string,
-  textAlign: PropTypes.string
+  textAlign: PropTypes.string,
+  lineHeight: PropTypes.number
 }
 
 Typography.defaultProps = {
@@ -50,5 +54,6 @@ Typography.defaultProps = {
   ellipsis: false,
   color: colors.neutral[800],
   textTransform: 'none',
-  textAlign: 'left'
+  textAlign: 'left',
+  lineHeight: 1.5
 }

@@ -10,13 +10,17 @@ const IconButtonWrapper = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${colors.neutral[300]};
+  border: 1px solid transparent;
   border-radius: ${misc.borderRadius.sm};
   cursor: pointer;
   transition: all 0.3s ease;
   width: 2rem;
   height: 2rem;
   background-color: ${colors.base.white};
+
+  ${props => props.border && `
+    border-color: ${colors.neutral[300]};
+  `}
 
   & path {
     fill: ${colors.neutral[500]};
@@ -25,7 +29,6 @@ const IconButtonWrapper = styled.button`
   &:disabled,
   &:disabled:hover {
     background-color: ${colors.neutral[200]};
-    border-color: ${colors.neutral[300]};
     cursor: not-allowed;
 
     & path {
@@ -40,8 +43,6 @@ const IconButtonWrapper = styled.button`
   ${focusStyle}
 
   &:hover {
-    border-color: ${colors.neutral[300]};
-
     & path {
       fill: ${colors.neutral[400]};
     }
@@ -56,7 +57,7 @@ const IconButtonWrapper = styled.button`
   }
 `
 
-export const IconButton = forwardRef(({ label, icon, disabled, onClick, loading, ...props }, ref) => {
+export const IconButton = forwardRef(({ label, border = true, icon, disabled, onClick, loading, ...props }, ref) => {
   const isDisabled = disabled || loading
 
   const handleClick = (e) => {
@@ -72,6 +73,7 @@ export const IconButton = forwardRef(({ label, icon, disabled, onClick, loading,
       onClick={handleClick}
       aria-disabled={isDisabled}
       disabled={isDisabled}
+      border={border}
       {...props}
     >
       {loading
@@ -92,7 +94,8 @@ IconButton.propTypes = {
   icon: PropTypes.node,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  border: PropTypes.bool
 }
 
 IconButton.defaultProps = {
