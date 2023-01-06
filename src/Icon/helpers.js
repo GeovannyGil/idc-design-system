@@ -49,7 +49,8 @@ export const iconMap = {
   fileImage: 'file-image',
   fileBlank: 'file-blank',
   fileDoc: 'file-doc',
-  fileCompressed: 'file-compressed'
+  fileCompressed: 'file-compressed',
+  minusCircle: 'minus-circle'
 }
 
 export const mapIcon = (type) => `${ICONS_ASSETS_PATH}/${iconMap[type]}.svg`
