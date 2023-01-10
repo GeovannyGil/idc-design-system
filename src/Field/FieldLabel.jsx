@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { colors } from '../tokens'
+import { useField } from './FieldContext'
 
 const LabelContent = styled.label`
   display: block;
@@ -15,25 +16,35 @@ const LabelContent = styled.label`
     '&::after': {
       content: '"*"',
       color: colors.danger[600]
-      // marginLeft: '0.25rem'
+      // marginLeft: '0.5rem'
     }
   }}
 `
 
-export const FieldLabel = ({ labelText, required }) => {
+export const FieldLabel = ({ children, action, required: requiredDeprecatedProp, ...props }) => {
+  const { id, required: requiredField } = useField()
+  const required = requiredDeprecatedProp || requiredField
+
+  if (requiredDeprecatedProp !== undefined) {
+    console.warn(
+      'Deprecation warning: Usage of "required" prop in FieldLabel component is deprecated. This is discouraged and will be removed in the next major release. Please use the Field component to share the required prop.'
+    )
+  }
+  if (children === undefined) return null
   return (
-    <LabelContent required={required} className='input__label'>
-      {labelText}
+    <LabelContent htmlFor={id} required={required} {...props}>
+      {children}
     </LabelContent>
   )
 }
 
 FieldLabel.propTypes = {
-  labelText: PropTypes.string.isRequired,
-  required: PropTypes.bool
+  children: PropTypes.string,
+  required: PropTypes.bool,
+  action: PropTypes.node
 }
 
 FieldLabel.defaultProps = {
   labelText: '',
-  required: false
+  required: undefined
 }

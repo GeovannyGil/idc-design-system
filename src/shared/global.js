@@ -98,6 +98,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${fonts.family};
   }
 
+  input, button, textarea, select  {
+    font-family: ${fonts.family};
+  }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
