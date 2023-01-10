@@ -2,6 +2,7 @@
 // TODO: Remove eslint-disable when we have a better solution for this
 export * from './tokens'
 export * from './shared'
+export * from './helpers'
 
 export * from './Accordion'
 export * from './Attachments'
@@ -25,5 +26,8 @@ export * from './Spacer'
 export * from './Status'
 export * from './SubNav'
 export * from './Table'
+export * from './TableForm'
+export * from './Textarea'
+export * from './ToggleCheckbox'
 export * from './Typography'
 /*  eslint-disable */
