@@ -1,6 +1,6 @@
 {
   "name": "idcform-design-system",
-  "version": "0.0.0-development",
+  "version": "0.2.0",
   "description": "IDC FORM Design System",
   "main": "src/index.js",
   "scripts": {
@@ -51,9 +51,9 @@
     "prettier-config-standard": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "semantic-release": "^20.0.2",
     "standard": "^17.0.0",
-    "tiny-glob": "0.2.9",
-    "semantic-release": "^20.0.2"
+    "tiny-glob": "0.2.9"
   },
   "dependencies": {
     "clsx": "^1.2.1",
@@ -94,6 +94,9 @@
     "*.js": "eslint --cache --fix"
   },
   "release": {
-    "branches": ["main", "next"]
+    "branches": [
+      "main",
+      "next"
+    ]
   }
 }

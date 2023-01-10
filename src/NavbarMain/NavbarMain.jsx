@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { colors, fonts, misc } from '../tokens'
@@ -39,6 +39,10 @@ const ListDropdownOptions = styled.ul`
   display: none;
   width: 150px;
   transform: translateY(4px);
+
+  ${({ show }) => show && `
+    display: flex;
+  `}
 `
 
 const ConatinerSearchBar = styled.div`
@@ -76,9 +80,9 @@ const ButtonDropdownOptions = styled.button`
     }
   }
 
-  &:focus+${ListDropdownOptions} {
+  /* &:focus+${ListDropdownOptions} {
     display: flex;
-  }
+  } */
 `
 
 const DropdownUser = styled.div`
@@ -115,6 +119,12 @@ const NavbarMainWrapper = styled.div`
 `
 
 export const NavbarMain = ({ nameRoute, user, propsSearchForm, ...props }) => {
+  const [showDropdown, setShowDropdown] = useState(false)
+
+  const onShowDropdown = () => {
+    setShowDropdown(!showDropdown)
+  }
+
   return (
     <NavbarMainWrapper>
       <TitleRoute>
@@ -133,15 +143,15 @@ export const NavbarMain = ({ nameRoute, user, propsSearchForm, ...props }) => {
       <DropdownUser>
         <Avatar src={user.image} alt={user.name} />
         <span>{user.name.split(' ')[0]}</span>
-        <ButtonDropdownOptions>
+        <ButtonDropdownOptions onClick={onShowDropdown}>
           <Icon type='chevronDown' size={20} />
         </ButtonDropdownOptions>
-        <ListDropdownOptions>
+        <ListDropdownOptions show={showDropdown}>
           <ListDropdownOption>
             <Link to='/user/profile'>Mi perfil</Link>
           </ListDropdownOption>
           <ListDropdownOption>
-            <Link href='/auth/logout'>Cerrar Sesión</Link>
+            <Link to='/'>Cerrar Sesión</Link>
           </ListDropdownOption>
         </ListDropdownOptions>
       </DropdownUser>
