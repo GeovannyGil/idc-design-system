@@ -92,5 +92,8 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
+  },
+  "release": {
+    "branches": ["main", "next"]
   }
 }
