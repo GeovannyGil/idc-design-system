@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { colors, fonts, misc } from '../tokens'
 import { Icon } from '../Icon'
-import { Field, FieldError, FieldHint, FieldLabel } from '../Field'
+import { FieldInput } from '../Field'
 
 const SelectTagItem = styled.div`
   background-color: ${colors.neutral[100]};
@@ -143,22 +143,13 @@ const SelectWrapper = styled.div`
   }
 `
 
-const FieldWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-`
-
+// TODO: Implement required
 export const Select = ({ size, placeholder, required, options, isMulti, isSercheable, onChange, label, hint, error, ...props }) => {
   const [showMenu, setShowMenu] = useState(false)
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null)
   const [searchValue, setSearchValue] = useState('')
   const searchRef = useRef()
   const inputRef = useRef()
-  const stateError = error !== ''
 
   useEffect(() => {
     setSearchValue('')
@@ -256,62 +247,41 @@ export const Select = ({ size, placeholder, required, options, isMulti, isSerche
   }
 
   return (
-    <FieldWrapper>
+    <SelectWrapper>
+      <SelectInput ref={inputRef} onClick={handleInputClick} size={size}>
+        <SelectedValue selected={selectedValue !== null && selectedValue?.length !==
+          0}
+        >{getDisplay()}
+        </SelectedValue>
+        <SelectTools>
+          <SelectTool>
+            <Icon type='arrowDown' size={12} />
+          </SelectTool>
+        </SelectTools>
+      </SelectInput>
       {
-        label &&
-          <FieldLabel
-            labelText={label}
-            required={required}
-          />
-      }
-      <SelectWrapper>
-        <SelectInput ref={inputRef} onClick={handleInputClick} size={size}>
-          <SelectedValue selected={selectedValue !== null && selectedValue?.length !==
-        0}
-          >{getDisplay()}
-          </SelectedValue>
-          <SelectTools>
-            <SelectTool>
-              <Icon type='arrowDown' size={12} />
-            </SelectTool>
-          </SelectTools>
-        </SelectInput>
-        {
         showMenu &&
           <SelectMenu>
             {
-              isSercheable &&
-                <SelectSearch>
-                  <Field placeholder='Buscar...' value={searchValue} onChange={onSearch} ref={searchRef} />
-                </SelectSearch>
-            }
+            isSercheable &&
+              <SelectSearch>
+                <FieldInput placeholder='Buscar...' value={searchValue} onChange={onSearch} ref={searchRef} />
+              </SelectSearch>
+          }
             {
-              getOptions().map((option) => (
-                <SelectItem
-                  key={option.value}
-                  onClick={() => onItemClick(option)}
-                  selected={isSelected(option)}
-                >
-                  {option.label}
-                </SelectItem>
-              ))
-            }
+            getOptions().map((option) => (
+              <SelectItem
+                key={option.value}
+                onClick={() => onItemClick(option)}
+                selected={isSelected(option)}
+              >
+                {option.label}
+              </SelectItem>
+            ))
+          }
           </SelectMenu>
       }
-      </SelectWrapper>
-      {
-        stateError &&
-          <FieldError
-            error={error}
-          />
-      }
-      {
-        hint &&
-          <FieldHint
-            hint={hint}
-          />
-      }
-    </FieldWrapper>
+    </SelectWrapper>
   )
 }
 

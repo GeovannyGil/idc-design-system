@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { focusInputStyle } from '../shared/utils'
 import { colors, misc, spacing } from '../tokens'
 import { Typography } from '../Typography'
+import { useField } from '../Field/FieldContext'
 
 const Input = styled.input`
   height: 100%;
@@ -88,7 +89,7 @@ const Label = styled.label`
   position: relative;
   display: inline-block;
   z-index: 0;
-width: ${({ width }) => width || '100%'};/*  */
+  width: ${({ width }) => width || '100%'};/*  */
 `
 
 const ToggleCheckboxWrapper = styled.div`
@@ -117,10 +118,18 @@ const ToggleCheckboxWrapper = styled.div`
   }
 `
 
-export const ToggleCheckbox = forwardRef(({ width, size, textOn, textOff, checked, disabled, onChange, name, ...props }, ref) => {
+export const ToggleCheckbox = forwardRef(({ width, size, textOn, textOff, checked, disabled, onChange, ...props }, ref) => {
+  const { name, required, id, hint, error } = useField()
   const checkedValue = checked === null ? false : checked
   // If state is null
   // const checkedValue = checked
+  let ariaDescription
+
+  if (error) {
+    ariaDescription = `${id}-error`
+  } else if (hint) {
+    ariaDescription = `${id}-hint`
+  }
 
   const handleChange = (e) => {
     if (disabled) return
@@ -172,6 +181,10 @@ export const ToggleCheckbox = forwardRef(({ width, size, textOn, textOff, checke
           checked={checkedValue}
           disabled={disabled}
           ref={ref}
+          required={required}
+          aria-required={required}
+          aria-describedby={ariaDescription}
+          id={id}
           {...props}
         />
       </ToggleCheckboxWrapper>

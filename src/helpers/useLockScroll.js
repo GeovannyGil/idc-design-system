@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 export const useLockScroll = (lockScroll) => {
   useEffect(() => {
@@ -8,7 +8,4 @@ export const useLockScroll = (lockScroll) => {
       document.body.classList.remove('lock-body-scroll')
     }
   }, [lockScroll])
-  return (
-    <div>useLockScroll</div>
-  )
 }

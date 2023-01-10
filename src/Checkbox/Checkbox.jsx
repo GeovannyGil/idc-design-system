@@ -4,15 +4,16 @@ import styled from 'styled-components'
 import { StylesTypography } from '../Typography'
 import { colors, fonts, misc } from '../tokens'
 import { CHECKBOX_STATES } from './utils'
-import { FieldError, FieldHint } from '../Field'
+import { Field, FieldError, FieldHint } from '../Field'
 import { Flex } from '../Flex'
+import { useIdRef } from '../helpers'
 
 const LayoutInput = styled.div`
   display: grid;
   align-items: center;
 
-  ${({ label }) =>
-    label
+  ${({ hasLabel }) =>
+    hasLabel
       ? `
         grid-template-columns: 1em auto;
         gap: 16px;
@@ -114,8 +115,8 @@ const FormControl = styled.label`
   border: 1px solid transparent;
   border-radius: ${misc.borderRadius.sm};
 
-  ${({ label }) =>
-    label &&
+  ${({ hasLabel }) =>
+    hasLabel &&
     `
       flex-direction: column;
       padding: 8px;
@@ -134,29 +135,30 @@ const FormControl = styled.label`
   };
 `
 
-export const Checkbox = ({ label, disabled, value, onChange, name, hint, error, ...props }) => {
+export const Checkbox = ({ label = false, disabled, value, onChange, name, hint, error, id, required, ...props }) => {
+  const generateId = useIdRef('checkbox', id)
   const hasLabel = label && label.length > 0
-  const hasHint = hint && hint.length > 0
-  const hasError = error && error.length > 0
   const checkBoxRef = useRef()
+  const hasError = Boolean(error)
+
+  let ariaDescription
+
+  if (hint) {
+    ariaDescription = `${generateId}-hint`
+  } else if (error) {
+    ariaDescription = `${generateId}-error`
+  }
 
   const handleChange = (e) => {
     if (disabled) return
     let updatedChecked
-
     if (value === CHECKBOX_STATES.Checked) {
       updatedChecked = CHECKBOX_STATES.Empty
-      console.log('updatedChecked', updatedChecked)
     } else if (value === CHECKBOX_STATES.Empty) {
       updatedChecked = CHECKBOX_STATES.Checked
-      console.log('updatedChecked', updatedChecked)
     } else if (value === CHECKBOX_STATES.Indeterminate) {
       updatedChecked = CHECKBOX_STATES.Checked
-      console.log('updatedChecked', updatedChecked)
     }
-    console.log('updatedChecked', updatedChecked)
-    console.log('updatedChecked', updatedChecked)
-
     onChange(e, updatedChecked)
   }
 
@@ -174,42 +176,47 @@ export const Checkbox = ({ label, disabled, value, onChange, name, hint, error, 
   }, [value])
 
   return (
-    <FormControl
-      checked={value === CHECKBOX_STATES.Checked}
-      label={hasLabel}
-      hint={hasHint}
-      error={hasError}
-    >
-      <LayoutInput
-        aria-disabled={disabled}
-        disabled={disabled}
-        label={hasLabel}
-        error={hasError}
+    <Field defaultStyles={false} id={generateId} hint={hint} error={error} required={required}>
+      <FormControl
+        checked={value === CHECKBOX_STATES.Checked}
+        hasLabel={hasLabel}
+        hint={hint}
+        error={error}
       >
-        <input
-          ref={checkBoxRef}
-          type='checkbox'
-          name={name}
+        <LayoutInput
+          aria-disabled={disabled}
           disabled={disabled}
-          value={value === CHECKBOX_STATES.Checked}
-          onChange={handleChange}
-          {...props}
-        />
-        {hasLabel && <span>{label}</span>}
-      </LayoutInput>
-      {
+          hasLabel={hasLabel}
+          error={error}
+        >
+          <input
+            checked={value === CHECKBOX_STATES.Checked}
+            onChange={handleChange}
+            type='checkbox'
+            name={name}
+            ref={checkBoxRef}
+            disabled={disabled}
+            aria-describedby={ariaDescription}
+            aria-invalid={hasError}
+            required={required}
+            {...props}
+          />
+          {hasLabel && <span>{label}</span>}
+        </LayoutInput>
+        {
         hasLabel &&
           <Flex direction='column'>
-            {hint && <FieldHint hint={hint} />}
-            {error && <FieldError error={error} />}
+            <FieldHint />
+            <FieldError />
           </Flex>
         }
-    </FormControl>
+      </FormControl>
+    </Field>
   )
 }
 
 Checkbox.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   value: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(Object.values(CHECKBOX_STATES))
@@ -217,16 +224,18 @@ Checkbox.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string,
   disabled: PropTypes.bool,
-  hint: PropTypes.string,
-  error: PropTypes.string
+  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+  error: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  required: PropTypes.bool
 }
 
 Checkbox.defaultProps = {
-  label: '',
   value: false,
-  onChange: undefined,
-  name: '',
   disabled: false,
-  hint: '',
-  error: ''
+  hint: undefined,
+  error: undefined,
+  onChange: undefined,
+  id: '',
+  required: false
 }

@@ -13,7 +13,8 @@ export const Directory = Template.bind({})
 Directory.args = {
   type: 'directory',
   name: 'Nombre de la carpeta',
-  description: 'Descripción de la carpeta'
+  description: 'Descripción de la carpeta',
+  to: '/directory'
 }
 
 export const FileImage = Template.bind({})

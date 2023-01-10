@@ -14,8 +14,6 @@ const IconButtonWrapper = styled.button`
   border-radius: ${misc.borderRadius.sm};
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 2rem;
-  height: 2rem;
   background-color: ${colors.base.white};
 
   ${props => props.border && `
@@ -55,9 +53,35 @@ const IconButtonWrapper = styled.button`
       fill: ${colors.neutral[500]};
     }
   }
+
+  ${({ size }) => {
+    switch (size) {
+      case 'sm':
+        return `
+          height: 1.5rem;
+          width: 1.5rem;
+
+          & .iconWrapper {
+            height: 20px;
+            width: 20px;
+          }
+        `
+      case 'lg':
+        return `
+          height: 26px;
+          width: 26px;
+        `
+      case 'md':
+      default:
+        return `
+          width: 2rem;
+          height: 2rem;
+        `
+    }
+  }}
 `
 
-export const IconButton = forwardRef(({ label, border = true, icon, disabled, onClick, loading, ...props }, ref) => {
+export const IconButton = forwardRef(({ label, border = true, icon, disabled, onClick, loading, size, ...props }, ref) => {
   const isDisabled = disabled || loading
 
   const handleClick = (e) => {
@@ -74,6 +98,7 @@ export const IconButton = forwardRef(({ label, border = true, icon, disabled, on
       aria-disabled={isDisabled}
       disabled={isDisabled}
       border={border}
+      size={size}
       {...props}
     >
       {loading
@@ -95,7 +120,8 @@ IconButton.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   loading: PropTypes.bool,
-  border: PropTypes.bool
+  border: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'md', 'lg'])
 }
 
 IconButton.defaultProps = {
@@ -103,5 +129,6 @@ IconButton.defaultProps = {
   icon: <Icon type='warning' />,
   onClick: undefined,
   disabled: false,
-  loading: false
+  loading: false,
+  size: 'md'
 }

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { FieldInputContaier } from '../Field/Field'
+import { FieldInputContaier } from '../Field'
 import PropTypes from 'prop-types'
 import { Icon } from '../Icon'
 import { colors } from '../tokens'
@@ -103,7 +103,6 @@ SearchBar.defaultProps = {
   placeholder: 'Search',
   disabled: false,
   size: 'md',
-  value: '',
   onClear: undefined,
   fullWidth: false
 }

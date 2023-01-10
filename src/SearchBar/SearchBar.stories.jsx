@@ -13,24 +13,21 @@ export const Default = Template.bind({})
 
 Default.args = {
   placeholder: 'Search',
-  disabled: false,
-  value: ''
+  disabled: false
 }
 
 export const Disabled = Template.bind({})
 
 Disabled.args = {
   placeholder: 'Search',
-  disabled: true,
-  value: ''
+  disabled: true
 }
 
 export const Small = Template.bind({})
 Small.args = {
   placeholder: 'Search',
   disabled: false,
-  size: 'sm',
-  value: ''
+  size: 'sm'
 }
 
 export const WithForm = () => {

@@ -17,8 +17,8 @@ const TitleDividerWrapper = styled.div`
 
 export const TitleDivider = ({ children, color, ...props }) => {
   return (
-    <TitleDividerWrapper>
-      <Typography color={color} variant='TABLE_LABEL' as='h4' {...props}>{children}</Typography>
+    <TitleDividerWrapper {...props}>
+      <Typography color={color} variant='TABLE_LABEL' as='h4'>{children}</Typography>
       <Divider background={color} />
     </TitleDividerWrapper>
   )

@@ -85,8 +85,6 @@ export const CheckboxGroup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(checkedItems)
-
     // obtain the form data from the event object
     const data = new FormData(e.target)
     // convert the data to a plain object

@@ -41,6 +41,7 @@ export const AccordionHeaderToggle = styled.button`
   background-color: ${colors.neutral[100]};
   border: none;
   padding: 12px 24px;
+  gap: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 
